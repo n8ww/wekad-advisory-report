@@ -1,0 +1,877 @@
+<!doctype html>
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif;background:#f2ede3}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>التقرير الاستشاري لوِكاد</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+:root{
+  color-scheme:light;
+  --brand:#303b2d; --brand-2:#3f4d39; --gold:#b08f5c; --gold-soft:#dbc4a4;
+  --bg:#f2ede3; --surface:#fdfbf6; --surface-2:#eee8da;
+  --ink:#22281f; --ink-2:#56604f; --muted:#8b907f;
+  --line:#e2dccb; --line-strong:#cfc7b2;
+  --accent:#303b2d;
+  --s1:#2a78d6; --s2:#eb6834; --ref:#a79c90;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --font-d:"Cairo",system-ui,sans-serif;
+  --font-b:"IBM Plex Sans Arabic","Cairo",system-ui,sans-serif;
+  --r:12px;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-b);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
+h1,h2,h3{font-family:var(--font-d);text-wrap:balance;margin:0}
+.masthead{background:var(--brand);border-radius:var(--r);padding:20px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.mast-id{display:flex;align-items:center;gap:14px;min-width:0}
+.logo{width:56px;height:56px;border-radius:10px;flex:none;display:block}
+.brand{display:flex;flex-direction:column;gap:3px;min-width:0}
+.eyebrow{font-size:11.5px;letter-spacing:.14em;color:var(--gold-soft);font-weight:600}
+h1{font-size:25px;font-weight:800;letter-spacing:-.01em;color:#fff}
+.sub{color:var(--gold-soft);font-size:13px;opacity:.85}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:flex;background:rgba(255,255,255,.08);border:1px solid rgba(219,196,164,.3);border-radius:999px;padding:3px;gap:2px}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--gold-soft);padding:7px 15px;border-radius:999px;cursor:pointer;font-family:var(--font-b)}
+.seg button[aria-pressed="true"]{background:var(--gold-soft);color:var(--brand);font-weight:700}
+.card .seg{background:var(--surface-2);border-color:var(--line)}
+.card .seg button{color:var(--ink-2)}
+.card .seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.seg button:focus-visible,.tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+@media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.kpi .label{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.kpi .val{font-family:var(--font-d);font-size:25px;font-weight:800;line-height:1.15;letter-spacing:-.015em}
+@media(max-width:420px){.kpi .val{font-size:21px}}
+.kpi .cur{font-size:13px;font-weight:600;color:var(--muted)}
+.kpi .foot{font-size:12.5px;color:var(--ink-2);margin-top:6px}
+.kpi.lead{background:var(--brand);border-color:var(--brand)}
+.kpi.lead .label{color:var(--gold-soft);opacity:.8}
+.kpi.lead .val,.kpi.lead .cur{color:#fff}
+.kpi.lead .foot{color:var(--gold-soft);opacity:.85}
+.neg{color:var(--crit)}
+.meter{height:7px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;margin-top:9px}
+.meter i{display:block;height:100%;background:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px;margin-top:14px;min-width:0}
+.grid .card{margin-top:0}
+.grid+.card,.grid+.grid{margin-top:14px}
+.card-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.card h3{font-size:15.5px;font-weight:700}
+.card .note{font-size:12px;color:var(--muted);text-align:left}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin:10px 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{width:11px;height:11px;border-radius:3px;display:inline-block}
+.swatch.ln{height:3px;width:16px;border-radius:2px}
+.chart{position:relative;margin-top:8px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;direction:ltr}
+.chart svg text{unicode-bidi:plaintext}
+.tabs+section>.card:first-child,.tabs+section>.kpis:first-child{margin-top:0}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;padding:8px 10px;font-size:12.5px;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.12);white-space:nowrap;z-index:5;transform:translate(-50%,-110%)}
+.tip b{font-weight:600}
+.tip .row{display:flex;gap:10px;justify-content:space-between;font-variant-numeric:tabular-nums}
+.tip .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-inline-end:5px}
+.tablewrap{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums;min-width:560px}
+th,td{padding:8px 10px;text-align:right;unicode-bidi:plaintext;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--surface)}
+tbody tr:hover{background:var(--surface-2)}
+tfoot td{font-weight:700;border-top:2px solid var(--line-strong);border-bottom:0}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;border:1px solid}
+.chip i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.c-good{color:var(--good);border-color:color-mix(in srgb,var(--good) 40%,transparent)}
+.c-warn{color:#8a5f00;border-color:color-mix(in srgb,var(--warn) 55%,transparent)}
+.c-ser{color:#a7502a;border-color:color-mix(in srgb,var(--serious) 55%,transparent)}
+.c-crit{color:var(--crit);border-color:color-mix(in srgb,var(--crit) 45%,transparent)}
+.foot-note{color:var(--muted);font-size:12.5px;margin-top:16px;line-height:1.8}
+.warnbar{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 16px;border-radius:var(--r);
+  background:var(--brand);color:var(--gold-soft);font-size:13.5px;line-height:1.8}
+.warnbar b{color:#fff;font-family:var(--font-d);font-weight:700}
+.warnbar .mark{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:16px;color:var(--gold-soft)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
+.tab{font:inherit;font-family:var(--font-d);font-size:14.5px;font-weight:600;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 14px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.mets{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:10px}
+.met{background:var(--surface);padding:12px 14px}
+.met .l{font-size:12px;color:var(--muted);margin-bottom:5px}
+.met .v{font-family:var(--font-d);font-size:19px;font-weight:700;letter-spacing:-.01em}
+.met .s{font-size:11.5px;color:var(--ink-2);margin-top:3px}
+.ach-rows{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.ach-row .top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;gap:10px}
+.ach-row .top b{font-family:var(--font-d);font-size:15px}
+.ach-row .meter{margin-top:7px;height:9px}
+#toast{position:fixed;inset-inline:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;z-index:1000;background:var(--brand);color:#fff;border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.8;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+#toast button{font:inherit;font-family:var(--font-d);font-weight:700;background:var(--gold-soft);color:var(--brand);border:0;border-radius:999px;padding:5px 14px;margin-top:8px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.five{margin-top:14px;background:var(--brand);border-radius:var(--r);padding:18px 20px;color:#fff}
+.five h3{color:#fff;font-size:15.5px;margin-bottom:10px}
+.five ol{margin:0;padding-inline-start:20px;font-size:13.5px;line-height:1.95;color:var(--gold-soft)}
+.five li{padding-inline-start:4px}
+.five li b{color:#fff}
+.seg100{display:flex;height:36px;border-radius:8px;overflow:hidden;margin-top:14px;background:var(--surface-2)}
+.seg100 i{display:block;height:100%;min-width:0}
+.seg100 i+i{border-inline-start:2px solid var(--surface)}
+.lead-p{font-size:14px;line-height:1.95;color:var(--ink-2);margin:12px 0 0}
+.lead-p b{color:var(--ink)}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line);white-space:nowrap}
+.pill.good{background:#e4f3e4;color:#0a6b0a;border-color:#bfe0bf}
+.pill.warn{background:#fdf1d6;color:#8a5a00;border-color:#f1dba4}
+.pill.crit{background:#fbe3e3;color:#9c2a2a;border-color:#f0bcbc}
+.pill.gold{background:#f3e9d9;color:#6f5530;border-color:var(--gold-soft)}
+.recs{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.rec{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:14px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface-2)}
+.rec .n{width:34px;height:34px;border-radius:50%;background:var(--brand);color:var(--gold-soft);font-family:var(--font-d);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+.rec h4{margin:0 0 4px;font-family:var(--font-d);font-size:14.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rec p{margin:0;font-size:13px;line-height:1.85;color:var(--ink-2)}
+.rec .k{margin-top:8px;font-size:12.5px;color:var(--brand);font-weight:600}
+.list{margin:10px 0 0;padding-inline-start:18px;font-size:13.5px;line-height:1.9;color:var(--ink-2)}
+.list li::marker{color:var(--gold)}
+.list li b{color:var(--ink)}
+.finds{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.finds li{display:flex;gap:10px;font-size:13.5px;line-height:1.8;color:var(--ink-2)}
+.finds li b{color:var(--ink)}
+.finds li i{flex:none;width:9px;height:9px;border-radius:50%;margin-top:9px;background:var(--gold)}
+.finds li i.g{background:var(--good)} .finds li i.w{background:var(--warn)} .finds li i.c{background:var(--crit)} .finds li i.s{background:var(--serious)}
+details.full{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:0 16px}
+details.full summary{cursor:pointer;font-family:var(--font-d);font-weight:700;font-size:14px;padding:13px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.full summary::-webkit-details-marker{display:none}
+details.full summary::after{content:'+';color:var(--muted);font-size:18px}
+details.full[open] summary::after{content:'−'}
+details.full .tablewrap{margin-bottom:12px}
+.tl{display:flex;flex-direction:column;margin-top:8px}
+.tl .step{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.tl .step:first-child{border-top:0}
+.tl .when{font-family:var(--font-d);font-weight:700;font-size:13px;color:var(--brand);line-height:1.6}
+.tl .what b{display:block;font-family:var(--font-d);font-size:14px;margin-bottom:3px;color:var(--ink)}
+.tl .what p{margin:0;font-size:13px;line-height:1.8;color:var(--ink-2)}
+@media(max-width:560px){.tl .step{grid-template-columns:1fr;gap:4px}}
+table.cmp td:first-child,table.cmp th:first-child{text-align:right;white-space:normal;min-width:150px}
+table td.sub{color:var(--muted);padding-inline-start:26px}
+table tr.grp td{font-family:var(--font-d);font-weight:700;background:var(--surface-2)}
+table tr.tot td{font-weight:700;border-top:2px solid var(--line-strong)}
+table tr.hl td{background:#f3e9d9}
+td.ok{color:#0a6b0a;font-weight:600} td.bad{color:var(--crit);font-weight:600}
+.srcs{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7}
+.num{font-variant-numeric:tabular-nums}
+.h4{font-family:var(--font-d);font-weight:700;font-size:14px;margin-top:16px;color:var(--ink)}
+.kpis.five-col{grid-template-columns:repeat(4,1fr)}
+.sec-title{display:flex;align-items:center;gap:12px;margin:22px 0 4px}
+.sec-title h2{font-size:19px;font-weight:800;color:var(--brand)}
+.sec-title .ln{flex:1;height:1px;background:var(--line-strong)}
+.sec-title .eyebrow{color:var(--gold);letter-spacing:.1em}
+.range-note{font-size:12.5px;color:var(--ink-2);margin-top:6px;line-height:1.8}
+.chart .tip{max-width:min(320px,80vw);white-space:normal}
+.big{font-family:var(--font-d);font-size:30px;font-weight:800;color:var(--brand);line-height:1.1;letter-spacing:-.015em}
+.big small{font-size:14px;color:var(--muted);font-weight:600}
+
+table.wrapcells td,table.wrapcells th{white-space:normal;line-height:1.7;vertical-align:top}
+table.wrapcells td{min-width:110px}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div class="mast-id">
+      <img class="logo" alt="شعار وكاد" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAcHBwcIBwgJCQgMDAsMDBEQDg4QERoSFBIUEhonGB0YGB0YJyMqIiAiKiM+MSsrMT5IPDk8SFdOTldtaG2Pj8ABBwcHBwgHCAkJCAwMCwwMERAODhARGhIUEhQSGicYHRgYHRgnIyoiICIqIz4xKysxPkg8OTxIV05OV21obY+PwP/CABEIAJYAlgMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAwYCBAUHAf/aAAgBAQAAAADyoAAAAAAAAAAAAAAAAAAAPuWAAAdaeK3+exAALjvdeqyzfKvdKDGAsva7+vlhBLp9rz+vANuXGfCPF2O9Q4QABb5qrqAAAAAAAAAAAAAAAAAAAAAAB//EABcBAQEBAQAAAAAAAAAAAAAAAAADAQL/2gAIAQIQAAAAiAAAAAcugJT6xfRglYAAAAAAD//EABcBAQEBAQAAAAAAAAAAAAAAAAABAwL/2gAIAQMQAAAAyAAAAAW3gDXblMeRam2MAAAAAAB//8QAPxAAAQMCAwMHCAYLAAAAAAAAAgEDBAAFBhESEyExFBUiQ3GT0TAyQEFRVGGjBxYjREVgMzRSVWJkgYORkqH/2gAIAQEAAT8A/O4iREiImaqqIie1VowNszbJFEgVRIV4oqLwX0KxOoze7Y4SIqDKb4/EqxMzsL/dW/5kl/26VWix3G8PbOI10R/SOluAO1aSJg2w/rT/ADlMHqx3gi086TzrjpZajJSXJMkzXy90w9zStpmxpCSIrxM/ajwRzwX1VfrU7c8cyIbXR2xARl+yOhNS1eLHic2eQW9hpm3N7gabeRCP+JxVyzJa+pGJfcU70PGgwJiQvuradrw0P0fYjXq2O9o8AYjHq2C7HfGp9unW17YzI5MnlmmrgqfBeC1AwOzJj6HrmLVxJpHBjbl0IvDXTrRsuuNOJpNsiAh9ip5GyYdkXqFLKK43t2XA6BllmBItOWS82ax3PlrzKRTENDKHrXba00qNXvDE28zWLta5jYbZgN+oh4J6lGgwxjcPNvvz3KXDWOV/HvnOeFFhPGR8b7892iwRikuN3TvXaZwbi5g9TV60f3HaxpPMWrTClq09OjrtHzDzfgn9aKbgt+c3fOXkzK3HoEiQtSJlkoZVitATEd10cNv/ANUUVfIxJ02C7tYkg2XMstQFkqpU663G4aOWTHXtPmoZZoPYlRrlcYobONOfZDjpBwhSlvd5/ecvvipbxdl/EpXfFS3S5r9/k98Vc4T/AHx/vS8a5wuHvj/el40OGL9LBJLDKSgc65t0T/zmvGoOGhsjXO17UNLPSZjCWpXHPUi1IfdkyHn3V1OOmRmvtUvQbVAukJpuYN6i29t4UPMn95J8QHOp8myPu67jep9ycHgLTaNAnYp1NOI5IMokc2Wd2lsz2ip2l6Dl+ef/xAAmEQABBAECBAcAAAAAAAAAAAABAAIREiFRYRNBUGIgIjAxMpHB/9oACAECAQE/AOgExKtixTXW5GPQc7IE50Vvj5hjVcXuauJ3t+kXvq38QMgHbwxzhVboq7KEbe042CHS/wD/xAAmEQACAgEBBgcAAAAAAAAAAAABAgARElETICEiMVAwMlJhY5Gx/9oACAEDAQE/AOwAWRMTmVEZMasi/AVDRJBrWYeblPE9RNkPQ82Xxt9xUQOw/YwokbuTdL4TJtTMm1MybWAJ1rm9zD2v/9k=">
+      <div class="brand">
+        <div class="eyebrow">شركة قهوة وكاد · الجلسة الاستشارية</div>
+        <h1>التقرير الاستشاري · نوفمبر 2026</h1>
+        <div class="sub">قائمة الدخل من 1 أغسطس 2025 إلى 31 أكتوبر 2026 (15 شهرًا) · القيم بالريال السعودي</div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="طريقة عرض أرقام الملخص">
+        <button data-mode="tot" aria-pressed="true">15 شهرًا</button>
+        <button data-mode="mo" aria-pressed="false">متوسط شهري</button>
+        <button data-mode="yr" aria-pressed="false">سنوي تقديري</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" id="t-sum" role="tab" aria-selected="true" aria-controls="p-sum">الملخص</button>
+    <button class="tab" id="t-pl" role="tab" aria-selected="false" aria-controls="p-pl">قائمة الدخل</button>
+    <button class="tab" id="t-mkt" role="tab" aria-selected="false" aria-controls="p-mkt">الحملات الترويجية</button>
+    <button class="tab" id="t-dir" role="tab" aria-selected="false" aria-controls="p-dir">التوجهات</button>
+    <button class="tab" id="t-ask" role="tab" aria-selected="false" aria-controls="p-ask">الطلبات</button>
+  </div>
+
+  <!-- ================= الملخص ================= -->
+  <section id="p-sum" role="tabpanel" aria-labelledby="t-sum">
+    <div class="kpis">
+      <div class="kpi lead"><div class="label">إجمالي الإيرادات</div><div class="val" id="k-rev">—</div><div class="foot" id="k-rev-f"></div></div>
+      <div class="kpi"><div class="label">إجمالي الربح</div><div class="val" id="k-gp">—</div><div class="foot" id="k-gp-f"></div></div>
+      <div class="kpi"><div class="label">الربح قبل الإهلاك</div><div class="val" id="k-ebitda">—</div><div class="foot" id="k-ebitda-f"></div></div>
+      <div class="kpi"><div class="label">صافي الربح</div><div class="val" id="k-net">—</div><div class="foot" id="k-net-f"></div></div>
+    </div>
+
+    <div class="five">
+      <h3>الخلاصة في خمس نقاط</h3>
+      <ol>
+        <li><b>الشركة رابحة بوضوح:</b> 1.84 مليون ريال صافي ربح على 7.47 مليون إيراد خلال 15 شهرًا، بهامش 24.6%، وربح قبل الإهلاك 2.30 مليون (30.8%).</li>
+        <li><b>الربحية نزلت مع التوسع:</b> متوسط الشهر قبل افتتاح الدمام كان 147.5 ألف صافي ربح (31%)، وأكتوبر 2026 بفرعين أغلق على 94.8 ألف (14%). إيراد الخبر مع الكيترنج نزل من نحو 472 ألف شهريًا إلى 330 ألف.</li>
+        <li><b>التسويق 528 ألف = 7.1% من الإيراد،</b> وسبتمبر وحده أخذ 119 ألف (17.7% من مبيعاته). من كل ما صُرف في سبتمبر وأكتوبر، 15% فقط له تكلفة موثقة على مستوى الحملة في التقارير.</li>
+        <li><b>فرع الدمام يسترد رأس ماله في أقل من سنة:</b> استثمار 647 ألف (تجهيز 457 ألف + خلو 190 ألف) مقابل 77 ألف ربح شهري قبل الإهلاك في أكتوبر، أي استرداد خلال 8–9 أشهر إن ثبت الأداء.</li>
+        <li><b>التقييم التقديري 8–12 مليون ريال</b> (وسطه نحو 10 مليون) على مضاعف 4–6 أضعاف الربح السنوي قبل الإهلاك بعد استبعاد البنود غير المتكررة. والفرنشايز ممكن نظاميًا من سبتمبر 2027 بعد إتمام الدمام سنة تشغيل.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>وين تروح كل 100 ريال مبيعات؟</h3><span class="note">من قائمة الدخل · 15 شهرًا</span></div>
+      <div class="seg100" id="seg100"></div>
+      <div class="legend" id="seg100-leg"></div>
+      <p class="lead-p">تكلفة البضاعة والموظفين بكل بنودهم تأخذ <b>47.4 ريال</b> من كل 100، والإيجار والإهلاك 10.8، والتسويق 7.1. تبقى <b>24.6 ريال صافي ربح</b>. البنود غير المتكررة (خلو القدم 190 ألف وتأسيس المنيو والتدريب 38.8 ألف) أكلت 3.1 ريال، وبدونها يكون الهامش 27.6%.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>من الإيراد إلى صافي الربح</h3><span class="note" id="wf-note">15 شهرًا</span></div>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--brand)"></i> إيراد وأرباح</span>
+          <span><i class="swatch" style="background:var(--crit)"></i> تكاليف</span>
+        </div>
+        <div class="chart" id="c-wf"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>أكبر 14 بندًا من التكاليف</h3><span class="note" id="top-note"></span></div>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--s1)"></i> تكلفة مباشرة</span>
+          <span><i class="swatch" style="background:var(--s2)"></i> تكلفة تشغيلية</span>
+          <span><i class="swatch" style="background:var(--gold)"></i> لمرة واحدة</span>
+        </div>
+        <div class="chart" id="c-top"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>قبل الدمام وبعده: الشهر كيف تغيّر</h3><span class="note">الإيراد وصافي الربح شهريًا</span></div>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--s1)"></i> الإيراد الشهري</span>
+        <span><i class="swatch" style="background:var(--s2)"></i> صافي الربح الشهري</span>
+      </div>
+      <div class="chart" id="c-mo"></div>
+      <div class="tablewrap">
+        <table class="cmp">
+          <thead><tr><th>المؤشر</th><th>متوسط الشهر · أغسطس 2025 – أغسطس 2026</th><th>سبتمبر 2026</th><th>أكتوبر 2026</th></tr></thead>
+          <tbody id="mo-tbody"></tbody>
+        </table>
+      </div>
+      <p class="lead-p">الأشهر الثلاثة عشر الأولى محسوبة بالطرح: قائمة الدخل الكاملة ناقص شهري سبتمبر وأكتوبر من تقاريرهما السابقة. كانت الشركة وقتها فرع الخبر والكيترنج فقط، وكانت تربح شهريًا أكثر مما تربحه اليوم بفرعين. سبتمبر خاسر بسبب خلو القدم 190 ألف وتسويق الافتتاح؛ بدون الخلو كان سيغلق على +14 ألف.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>ما يلفت الانتباه في القائمة</h3><span class="note">قراءة للجلسة</span></div>
+      <ul class="finds">
+        <li><i class="c"></i><span><b>الخبر على حافة التعادل:</b> في أكتوبر باع 289 ألف ونقطة تعادله نحو 278 ألف، فربحه 6.6 ألف فقط. أي نزول 4% يدخله الخسارة. هذا أهم رقم في القائمة لأن الخبر كان مصدر الربح كله قبل سبتمبر.</span></li>
+        <li><i class="w"></i><span><b>الموظفون 19% من الإيراد</b> (رواتب مباشرة 866 ألف + إدارية 220 ألف + إقامات 184 ألف + نهاية خدمة وإجازات وتأمينات 112 ألف). في أكتوبر وحده وصلت النسبة 24.4%، أي أن الكلفة ترتفع أسرع من المبيعات.</span></li>
+        <li><i class="w"></i><span><b>رسوم بنكية 96.6 ألف (1.3%) وتطبيقات توصيل 107.7 ألف (1.4%):</b> 204 ألف ريال رسوم وسطاء، قابلة للتفاوض مع البنك ومع المنصات.</span></li>
+        <li><i class="s"></i><span><b>الإهلاك 444 ألف</b> منها 213 ألف آلات ومعدات و161 ألف تحسينات، وهو ما يجعل الربح قبل الإهلاك (2.30 مليون) هو الرقم الأنسب لأي حديث عن التقييم.</span></li>
+        <li><i class="g"></i><span><b>التكاليف غير التشغيلية صغيرة:</b> زكاة 12.8 ألف وتبرعات 5 آلاف. الفرق بين الربح قبل الزكاة وصافي الربح 17.8 ألف فقط.</span></li>
+        <li><i></i><span><b>الفترة 15 شهرًا وليست سنة مالية،</b> وفيها شهر واحد تقريبًا بفرعين كاملين (أكتوبر). لذلك كل رقم «سنوي» في هذا التقرير تقديري: إما 12/15 من الفترة، أو أكتوبر مضروبًا في 12، وكلاهما مذكور صراحة في موضعه.</span></li>
+      </ul>
+    </div>
+    <p class="foot-note">المصدر: قائمة الدخل لشركة قهوة وكاد من 01-08-2025 إلى 31-10-2026 (صفحتان). أرقام سبتمبر وأكتوبر 2026 من تقريري الإقفال الشهري السابقين لنفس النظام المحاسبي. «الربح قبل الإهلاك» = صافي الدخل قبل الفوائد والضريبة والزكاة + مصاريف الإهلاك. النِّسب من الإيرادات التشغيلية.</p>
+  </section>
+
+  <!-- ================= قائمة الدخل ================= -->
+  <section id="p-pl" role="tabpanel" aria-labelledby="t-pl" hidden="">
+    <div class="kpis">
+      <div class="kpi lead"><div class="label">التكاليف المباشرة (51)</div><div class="val">2,996,189 <span class="cur">ر.س</span></div><div class="foot">40.1% من الإيراد · البضاعة 28.4% والرواتب 11.6%</div></div>
+      <div class="kpi"><div class="label">التكاليف التشغيلية (52)</div><div class="val">2,618,677 <span class="cur">ر.س</span></div><div class="foot">35.1% من الإيراد · 38 بندًا</div></div>
+      <div class="kpi"><div class="label">مصاريف غير تشغيلية (53)</div><div class="val">17,793 <span class="cur">ر.س</span></div><div class="foot">زكاة 12,793 + جمعيات خيرية 5,000</div></div>
+      <div class="kpi"><div class="label">صافي الدخل قبل الفوائد والزكاة</div><div class="val">1,854,603 <span class="cur">ر.س</span></div><div class="foot">24.8% من الإيراد</div></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>قائمة الدخل كاملة كما وردت</h3><span class="note">شركة قهوة وكاد · من 01-08-2025 إلى 31-10-2026</span></div>
+      <div class="tablewrap">
+        <table class="cmp" style="min-width:620px">
+          <thead><tr><th>الرمز</th><th>البند</th><th>المبلغ (ر.س)</th><th>% من الإيراد</th></tr></thead>
+          <tbody id="pl-tbody"></tbody>
+        </table>
+      </div>
+      <p class="foot-note" style="margin-top:12px">كل بند في الصفحتين موجود هنا بنفس رقمه. مجموع بنود 52 مطابق لمجموعها في القائمة (2,618,676.79). النسب محسوبة على 7,469,469.26.</p>
+    </div>
+  </section>
+
+  <!-- ================= الحملات الترويجية ================= -->
+  <section id="p-mkt" role="tabpanel" aria-labelledby="t-mkt" hidden="">
+    <div class="kpis">
+      <div class="kpi lead"><div class="label">مصاريف تسويقية ودعائية · 15 شهرًا</div><div class="val">528,025 <span class="cur">ر.س</span></div><div class="foot">7.1% من الإيراد · بند 5203</div></div>
+      <div class="kpi"><div class="label">متوسط الشهر</div><div class="val">35,202 <span class="cur">ر.س</span></div><div class="foot">قبل الدمام 28.9 ألف · بعده 76.4 ألف</div></div>
+      <div class="kpi"><div class="label">ذروة سبتمبر 2026</div><div class="val">118,929 <span class="cur">ر.س</span></div><div class="foot">17.7% من مبيعات الشهر · افتتاح الدمام</div></div>
+      <div class="kpi"><div class="label">رسوم تطبيقات التوصيل</div><div class="val">107,726 <span class="cur">ر.س</span></div><div class="foot">1.4% من الإيراد · بند 5227، خارج بند التسويق</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>التسويق شهريًا: قبل الدمام وبعده</h3><span class="note">بند 5203 حسب الفرع</span></div>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--s1)"></i> الخبر</span>
+        <span><i class="swatch" style="background:var(--s2)"></i> الدمام</span>
+        <span><i class="swatch" style="background:var(--ref)"></i> غير موزّع (متوسط محسوب)</span>
+      </div>
+      <div class="chart" id="c-mkt"></div>
+      <p class="lead-p">قبل سبتمبر كان التسويق <b>6.1% من المبيعات</b> (28.9 ألف شهريًا). سبتمبر قفز إلى 17.7% بسبب الافتتاح، ثم عاد أكتوبر إلى 5.1% (33.9 ألف: 16.9 للخبر، 16.7 للدمام، 250 ريالًا فقط للكيترنج). المدفوع نقدًا في سبتمبر 92.7 ألف وفي أكتوبر 10.5 ألف، والباقي مسجّل على الذمم.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>الحملات الترويجية كما وثّقتها التقارير السابقة</h3><span class="note">يونيو – أكتوبر 2026</span></div>
+      <div class="tablewrap">
+        <table class="cmp wrapcells" style="min-width:560px">
+          <thead><tr><th>الحملة</th><th>التاريخ</th><th>القناة</th><th>التكلفة الموثقة</th><th>النتيجة المقاسة</th><th>الحكم في تقريرها</th></tr></thead>
+          <tbody id="camp-tbody"></tbody>
+        </table>
+      </div>
+      <p class="lead-p">التكاليف الموثقة في تقارير الحملات مجموعها <b>23,670 ريالًا</b> (20,600 للمؤثرين في الافتتاح + 3,050 لمعلني موقف قوّة + 20 لفيديو تجريبي)، بينما بند التسويق لشهري سبتمبر وأكتوبر وحدهما 152,800 ريال. أي أن <b>85% من الصرف ليس له تكلفة مرتبطة بحملة محددة</b> في أي تقرير: مطبوعات، أكواب، تجهيزات افتتاح، دعوات، عروض. هذه فجوة توثيق لا فجوة صرف، لكنها تمنع قياس عائد أي حملة.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>تكلفة الألف مشاهدة للمؤثرين</h3><span class="note">ريال لكل 1,000 مشاهدة · الأقل أفضل</span></div>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--s1)"></i> افتتاح الدمام (15 حسابًا)</span>
+          <span><i class="swatch" style="background:var(--s2)"></i> موقف قوّة (4 حسابات)</span>
+        </div>
+        <div class="chart" id="c-cpm"></div>
+        <p class="lead-p">حملة الافتتاح كلّفت 18.5 ريالًا لكل ألف مشاهدة، وموقف قوّة 7.6 ريالًا. الحسابات المتوسطة أرخص بفارق كبير من الحساب الكبير (@gheyo7 بـ 23 ريالًا للألف مقابل 6–8 للحسابات الصغيرة).</p>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>ما لا يظهر في بند التسويق</h3><span class="note">ترويج يُدفع من الهامش لا من الميزانية</span></div>
+        <ul class="finds">
+          <li><i class="c"></i><span><b>خصومات هنقرستيشن الممولة من المتجر: 54.4 ألف ريال</b> من يناير إلى 8 نوفمبر 2026، أي 21.4% من مبيعات المنصة (254 ألف). في سبتمبر وصلت 33% من مبيعات الكورنيش. أكبر من عمولة المنصة نفسها (16.9%).</span></li>
+          <li><i class="w"></i><span><b>عمولة المنصة ارتفعت من 15% إلى 18% في أبريل 2026</b>؛ كلفة النقاط الثلاث نحو 6.3 ألف ريال حتى نوفمبر. فرع الدمام على 18% من اليوم الأول.</span></li>
+          <li><i class="w"></i><span><b>مشروبات موقف قوّة المجانية:</b> 714 مشروبًا للقطاع العسكري يوم 23 أكتوبر، قيمتها بسعر المنيو 13,941 ريالًا. أثرها لا يظهر في التسويق بل في المبيعات الضائعة.</span></li>
+          <li><i class="s"></i><span><b>5,000 كوب لموقف قوّة</b> طُبعت ونصفها انصرف، وأكواب اليوم الوطني «نفدت مبكرًا». كلفة المطبوعات لم تُذكر في أي تقرير.</span></li>
+          <li><i class="g"></i><span><b>حملة قوقل للكيترنج جاهزة ولم تُطلق:</b> 60 ريالًا يوميًا (1,800 شهريًا) بسقف 300 ريال للحجز. أرخص قناة متاحة، والكيترنج أعلى هامش في الشركة.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>ما نقترحه على التسويق</h3><span class="note">للمناقشة في الجلسة</span></div>
+      <div class="recs">
+        <div class="rec"><div class="n">1</div><div><h4>كود تكلفة لكل حملة <span class="pill gold">فورًا</span></h4><p>كل فاتورة تسويق تُقيّد على اسم حملة (افتتاح، يوم وطني، موقف قوّة، عروض دائمة). بدونها لا يمكن حساب عائد أي حملة، وتقارير الوكالة ستبقى تقيس المشاهدات لا الريالات.</p><div class="k">النتيجة: تقرير شهري «حملة ← تكلفة ← مبيعات اليوم» بدل بند واحد بـ 528 ألف</div></div></div>
+        <div class="rec"><div class="n">2</div><div><h4>سقف 6% من المبيعات للتسويق الجاري <span class="pill">من نوفمبر</span></h4><p>هذا هو المعدل الذي اشتغلت به الشركة 13 شهرًا وهي تحقق 31% هامشًا. حملات الافتتاح تُستثنى وتُحسب ضمن تكلفة تأسيس الفرع، لا ضمن تسويق الشهر.</p><div class="k">عند مبيعات 664 ألف: ميزانية 40 ألف شهريًا</div></div></div>
+        <div class="rec"><div class="n">3</div><div><h4>خفض خصومات التوصيل الممولة من المتجر إلى 12% <span class="pill warn">خلال شهر</span></h4><p>كل نقطة خصم تُدفع من الهامش. إيقاف الباقات المخفّضة في الذروة والاكتفاء بخصم Pro يرفع صافي التاجر من 51% إلى نحو 60% من مبيعات المنصة.</p><div class="k">على مبيعات 45 ألف شهريًا: نحو 4 آلاف ريال إضافية في الهامش كل شهر</div></div></div>
+        <div class="rec"><div class="n">4</div><div><h4>حسابات متوسطة بدل حساب كبير <span class="pill good">القاعدة القادمة</span></h4><p>في الافتتاح، 4 حسابات بـ 800–1,500 ريال جابت 492 ألف مشاهدة بـ 4,450 ريالًا، بينما حساب واحد بـ 4,000 ريال جاب 173 ألفًا. موقف قوّة أكّد الفكرة بتكلفة 7.6 للألف.</p><div class="k">نفس الميزانية = ضعفا الوصول</div></div></div>
+      </div>
+    </div>
+    <p class="foot-note">المصادر: بند 5203 من قائمة الدخل؛ تقريرا الإقفال الشهري لسبتمبر وأكتوبر 2026 (التسويق حسب الفرع والمدفوع نقدًا)؛ تقارير وكالة صيت لحملات وكاد (كأس العالم، لا تهز الفنجان، افتتاح فرع الدمام، اليوم الوطني)؛ لوحة حملة موقف قوّة؛ تقرير وِكاد على هنقرستيشن 2026؛ ملف حملة قوقل للكيترنج. الحملات التي لا تذكر تقاريرها تكلفة معلّمة بشرطة.</p>
+  </section>
+
+  <!-- ================= التوجهات ================= -->
+  <section id="p-dir" role="tabpanel" aria-labelledby="t-dir" hidden="">
+    <div class="kpis">
+      <div class="kpi lead"><div class="label">استثمار فرع الدمام</div><div class="val">646,981 <span class="cur">ر.س</span></div><div class="foot">تجهيز 456,981 + خلو قدم 190,000</div></div>
+      <div class="kpi"><div class="label">ربح الدمام الشهري قبل الإهلاك</div><div class="val">76,994 <span class="cur">ر.س</span></div><div class="foot">أكتوبر 2026 · صافي 66,115 + إهلاك 10,879</div></div>
+      <div class="kpi"><div class="label">استرداد رأس المال</div><div class="val">8.4 <span class="cur">شهرًا</span></div><div class="foot">10 أشهر مع التدريب وتسويق الافتتاح</div></div>
+      <div class="kpi"><div class="label">نافذة الفرنشايز النظامية</div><div class="val" style="font-size:21px">سبتمبر 2027</div><div class="foot">سنة تشغيل كاملة لفرعين</div></div>
+    </div>
+
+    <div class="sec-title"><span class="eyebrow">التوجه الأول</span><h2>فتح فروع جديدة</h2><span class="ln"></span></div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>نموذج الفرع الواحد</h3><span class="note">مبني على هيكل تكاليف الدمام في أكتوبر</span></div>
+        <div class="tablewrap">
+          <table class="cmp" style="min-width:520px">
+            <thead><tr><th>الشهر عند مبيعات</th><th>متحفظ · 250 ألف</th><th>مثل الدمام · 330 ألف</th><th>الهدف · 450 ألف</th></tr></thead>
+            <tbody id="unit-tbody"></tbody>
+          </table>
+        </div>
+        <p class="range-note">الافتراضات: تكلفة بضاعة 33.5%، رواتب وإقامات 83.4 ألف، إيجار 18.3 ألف، إهلاك 10.9 ألف، تسويق 16.7 ألف، مصاريف أخرى 26.5 ألف (كلها أرقام الدمام في أكتوبر). استثمار الفرع 647 ألف. نقطة التعادل نحو 234 ألف شهريًا.</p>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>شروط قبل أي فرع جديد</h3><span class="note">ما تعلّمناه من الدمام</span></div>
+        <ul class="finds">
+          <li><i class="c"></i><span><b>الخبر فوق 350 ألف أولًا.</b> عند 350 ألف يربح الفرع نحو 42 ألف شهريًا. التوسع وفرع الأم على حافة التعادل يعني أن الفرع الجديد يموّل ضعف القديم.</span></li>
+          <li><i class="w"></i><span><b>كتيّب افتتاح مكتوب.</b> تقرير الافتتاح سجّل: قرارات متأخرة، دعوات تأخرت وخسرت جماليتها، إعلان عن الموعد قبل اعتماده، واجهة ومطبوعات تأخرت. كل بند من هذه له موعد مقفل في الكتيّب.</span></li>
+          <li><i class="w"></i><span><b>مدير تشغيل ومسؤول مشتريات ومخازن</b> قبل الفرع الثالث. فروقات تكلفة البضاعة بين الفرعين (36.6% في الخبر مقابل 33.5% في الدمام) تساوي 9 آلاف ريال شهريًا على مبيعات الخبر وحدها.</span></li>
+          <li><i class="g"></i><span><b>التمويل ذاتي:</b> رصيد النقد نهاية أكتوبر 538 ألف، والتدفق الشهري قبل الإهلاك نحو 135 ألف. فرع كل 6–8 أشهر ممكن بلا دين، بشرط إيقاف السلف للشركات الشقيقة (50 ألف في أكتوبر وحده).</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>خطة التوسع المقترحة</h3><span class="note">2027 – 2028</span></div>
+      <div class="tl">
+        <div class="step"><div class="when">نوفمبر 2026 – فبراير 2027</div><div class="what"><b>تثبيت الفرعين</b><p>الخبر إلى 350 ألف، الدمام يحافظ على 330 ألف فأكثر، كود تكلفة للحملات، وتوقيع عقد الموقع الثالث. الهدف: ثلاثة أشهر متتالية فوق 100 ألف صافي ربح شهري.</p></div></div>
+        <div class="step"><div class="when">الربع الثاني 2027</div><div class="what"><b>الفرع الثالث · القطيف أو الجبيل</b><p>بنفس مساحة الدمام ونموذجه، بميزانية افتتاح محددة سلفًا (المؤثرون 15 ألفًا بحسابات متوسطة، لا 20.6 ألفًا)، وكتيّب الافتتاح. الاسترداد المتوقع 9–12 شهرًا.</p></div></div>
+        <div class="step"><div class="when">سبتمبر 2027</div><div class="what"><b>إطلاق الفرنشايز</b><p>اكتمال سنة الدمام يفتح النافذة النظامية. الملف جاهز قبلها بثلاثة أشهر (التفاصيل في التوجه الثاني).</p></div></div>
+        <div class="step"><div class="when">الربع الرابع 2027</div><div class="what"><b>الفرع الرابع · الأحساء أو نقطة صغيرة</b><p>مملوك إن ثبت الفرع الثالث، أو بصيغة كشك/بوث داخل مجمع بتكلفة ربع الفرع، يعتمد على تجربة بوث وِكاد الحالية.</p></div></div>
+        <div class="step"><div class="when">2028</div><div class="what"><b>خارج المنطقة الشرقية بالفرنشايز</b><p>الرياض أولًا عبر ممنوح له واحد لوحدتين، ثم جدة. وِكاد تحتفظ بالمنطقة الشرقية مملوكة بالكامل.</p></div></div>
+      </div>
+    </div>
+
+    <div class="sec-title"><span class="eyebrow">التوجه الثاني</span><h2>التوسع بالفرنشايز</h2><span class="ln"></span></div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>جاهزية وِكاد للفرنشايز</h3><span class="note">ما يلزم قبل أول عقد</span></div>
+        <ul class="finds">
+          <li><i class="g"></i><span><b>شرط الوحدتين والسنة:</b> نظام الامتياز التجاري السعودي يشترط أن يكون المانح قد شغّل النشاط عبر وحدتين على الأقل لمدة سنة قبل منح الامتياز. الدمام افتُتح 9 سبتمبر 2026، فالنافذة تفتح سبتمبر 2027 (يُراجع مع المستشار القانوني).</span></li>
+          <li><i class="w"></i><span><b>تسجيل العلامة التجارية</b> «وِكاد» بالاسم والشعار في الهيئة السعودية للملكية الفكرية، في فئة المقاهي وفئة منتجات القهوة. بدون العلامة لا يوجد ما يُرخَّص.</span></li>
+          <li><i class="w"></i><span><b>وثيقة الإفصاح</b> تُسلَّم للممنوح له قبل التوقيع بـ 14 يومًا على الأقل، وتسجيل الاتفاقية في وزارة التجارة. محتواها: القوائم المالية، تكلفة الوحدة، الرسوم، الالتزامات.</span></li>
+          <li><i class="s"></i><span><b>دليل التشغيل والتدريب:</b> وصفات، مواصفات الحبوب والموردين، معايير الخدمة، فتح وإغلاق، سلسلة الإمداد. بند «تدريب وتأسيس منيو» 38,750 في القائمة هو بذرة هذا الدليل.</span></li>
+          <li><i class="s"></i><span><b>قوائم مالية نظيفة لسنتين:</b> أول ما يطلبه الممنوح له أو المقيّم. فصل السلف للشركات الشقيقة وتوحيد الأساس المحاسبي قبل سبتمبر 2027.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>النموذج المالي المقترح للوحدة</h3><span class="note">افتراضات أولية للنقاش</span></div>
+        <div class="tablewrap">
+          <table class="cmp wrapcells" style="min-width:420px">
+            <thead><tr><th>البند</th><th>القيمة</th><th>ملاحظة</th></tr></thead>
+            <tbody>
+              <tr><td>رسم الامتياز الأولي</td><td class="num">150,000 – 250,000</td><td>يغطي التدريب والافتتاح والدعم</td></tr>
+              <tr><td>الإتاوة الشهرية</td><td class="num">5% – 6% من المبيعات</td><td>عند 330 ألف: 16.5 – 19.8 ألف شهريًا</td></tr>
+              <tr><td>صندوق التسويق</td><td class="num">1.5% من المبيعات</td><td>يُصرف على العلامة، ليس ربحًا</td></tr>
+              <tr><td>استثمار الممنوح له</td><td class="num">650,000 – 750,000</td><td>تجهيز + خلو + رأس مال عامل</td></tr>
+              <tr><td>مدة العقد</td><td class="num">5 سنوات</td><td>قابلة للتجديد، حق أولوية لوِكاد</td></tr>
+              <tr class="tot"><td>دخل وِكاد السنوي من الوحدة</td><td class="num">≈ 200,000 – 240,000</td><td>إتاوة فقط، بلا رأس مال مُستثمر</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="range-note">خمس وحدات فرنشايز بحلول 2028 تعني نحو 1 مليون ريال رسومًا أولية و1 – 1.2 مليون إتاوات سنوية، مقابل فرع مملوك يدرّ 924 ألفًا قبل الإهلاك لكن يحتاج 647 ألفًا رأس مال وإدارة يومية.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>مملوك أم فرنشايز؟</h3><span class="note">المقارنة على وحدة بمبيعات 330 ألف شهريًا</span></div>
+      <div class="tablewrap">
+        <table class="cmp wrapcells" style="min-width:480px">
+          <thead><tr><th>المعيار</th><th>فرع مملوك</th><th>وحدة فرنشايز</th></tr></thead>
+          <tbody>
+            <tr><td>رأس المال من وِكاد</td><td class="num bad">647,000</td><td class="num ok">0 (بل يدخل رسم 200 ألف)</td></tr>
+            <tr><td>دخل وِكاد السنوي</td><td class="num ok">≈ 924,000 قبل الإهلاك</td><td class="num">≈ 218,000 إتاوة</td></tr>
+            <tr><td>الاسترداد</td><td class="num">8 – 12 شهرًا</td><td class="num ok">فوري</td></tr>
+            <tr><td>التحكم بالجودة</td><td class="ok">كامل</td><td class="bad">عبر العقد والتفتيش</td></tr>
+            <tr><td>سرعة الانتشار</td><td>فرع كل 6 – 8 أشهر</td><td class="ok">عدة وحدات بالتوازي</td></tr>
+            <tr><td>المخاطر على العلامة</td><td class="ok">منخفضة</td><td class="bad">ممنوح له سيئ يضر الكل</td></tr>
+            <tr class="tot"><td>التوصية</td><td>المنطقة الشرقية</td><td>الرياض وجدة من 2028</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sec-title"><span class="eyebrow">مسارات مساندة</span><h2>تنمو بلا رأس مال كبير</h2><span class="ln"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>الكيترنج</h3><span class="pill good">أعلى هامش</span></div>
+        <p class="lead-p" style="margin-top:8px">41 ألفًا شهريًا فقط بهامش 53.5% (بدون تحميل رواتب إدارية). حملة قوقل جاهزة بـ 1,800 ريال شهريًا. هدف واقعي: 100 ألف شهريًا خلال 2027، أي 30 ألفًا ربحًا إضافيًا كل شهر بلا فرع جديد.</p>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>المنتجات والتجزئة</h3><span class="pill">يُدرس</span></div>
+        <p class="lead-p" style="margin-top:8px">حبوب وِكاد، الشوكولاتة، والأكواب التي أثبتت أنها تصنع مبيعات (اليوم الوطني وموقف قوّة). خط تجزئة في الفرعين والموقع يرفع متوسط الفاتورة ويجهّز سلسلة الإمداد التي سيحتاجها الفرنشايز.</p>
+      </div>
+    </div>
+    <p class="foot-note">أرقام الدمام والخبر والكيترنج والنقد من تقرير الإقفال الشهري لأكتوبر 2026، وتكاليف تجهيز الدمام من بيان تكاليف الفرع في إقفال سبتمبر 2026. نموذج الفرع والفرنشايز افتراضات محسوبة للنقاش وليست تعهدات. الشرط النظامي للفرنشايز يُراجع مع مستشار قانوني قبل اعتماد أي تاريخ.</p>
+  </section>
+
+  <!-- ================= الطلبات ================= -->
+  <section id="p-ask" role="tabpanel" aria-labelledby="t-ask" hidden="">
+    <div class="kpis">
+      <div class="kpi lead"><div class="label">التقييم التقديري للشركة</div><div class="val">8 – 12 <span class="cur">مليون ر.س</span></div><div class="foot">الوسط نحو 10 مليون · أربع طرق متقاطعة</div></div>
+      <div class="kpi"><div class="label">الربح السنوي قبل الإهلاك (معدّل)</div><div class="val">2.02 <span class="cur">مليون</span></div><div class="foot">12/15 من الفترة + البنود غير المتكررة</div></div>
+      <div class="kpi"><div class="label">المضاعف المستخدم</div><div class="val">4 – 6<span class="cur">×</span></div><div class="foot">مقاهٍ متخصصة غير مدرجة بوحدتين</div></div>
+      <div class="kpi"><div class="label">معدل أكتوبر السنوي</div><div class="val">1.62 <span class="cur">مليون</span></div><div class="foot">ربح قبل الإهلاك × 12 · الحد الأدنى للحساسية</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>كم تساوي وِكاد؟ النطاق بأربع طرق</h3><span class="note">بالمليون ريال · الشريط الذهبي = النطاق المعتمد</span></div>
+      <div class="chart" id="c-val"></div>
+      <div class="tablewrap">
+        <table class="cmp wrapcells" style="min-width:520px">
+          <thead><tr><th>الطريقة</th><th>الأساس السنوي</th><th>المضاعف</th><th>النطاق (مليون ر.س)</th></tr></thead>
+          <tbody id="val-tbody"></tbody>
+        </table>
+      </div>
+      <p class="lead-p">الطرق الأربع الأولى تتقاطع عند <b>8 – 12 مليون ريال</b>. الطريقة الخامسة تحذيرية: لو ثبتت الشركة على أداء أكتوبر فقط (بفرعين) يهبط النطاق إلى 6.5 – 9.7 مليون، لأن أكتوبر أضعف من متوسط الفترة. هذا هو السبب العملي لتثبيت الخبر قبل أي حديث مع مستثمر.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>ما يرفع التقييم</h3><span class="pill good">نقاط قوة</span></div>
+        <ul class="finds">
+          <li><i class="g"></i><span><b>هامش صافٍ 24.6% على 15 شهرًا</b> وربح قبل الإهلاك 30.8%، نادر في قطاع المقاهي.</span></li>
+          <li><i class="g"></i><span><b>فرع جديد يسترد رأس ماله في 8 – 10 أشهر</b>، وهذا يُسعَّر كقدرة على التكرار لا كفرع واحد.</span></li>
+          <li><i class="g"></i><span><b>علامة لها جمهور:</b> 1.11 مليون مشاهدة للافتتاح، وحملة وطنية انتشرت بلا مؤثرين، وتقييم 4.47 من 5 على منصة التوصيل.</span></li>
+          <li><i class="g"></i><span><b>كيترنج بهامش 53%</b> وقناة قوقل جاهزة: نمو رخيص جاهز للتنفيذ.</span></li>
+          <li><i class="g"></i><span><b>جاهزية فرنشايز نظامية من سبتمبر 2027</b>، أي أن المشتري يشتري أيضًا حق التوسع.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>ما ينزّل التقييم</h3><span class="pill crit">يُعالج قبل أي مستثمر</span></div>
+        <ul class="finds">
+          <li><i class="c"></i><span><b>تراجع فرع الأم:</b> إيراد الخبر مع الكيترنج نزل من 472 ألف إلى 330 ألف شهريًا، وربح الخبر 6.6 ألف في أكتوبر. المستثمر سيسأل: هل الدمام سحب من الخبر؟</span></li>
+          <li><i class="c"></i><span><b>لا ميزانية عمومية ولا قائمة تدفقات:</b> التقييم أعلاه قيمة منشأة؛ قيمة الحصص تحتاج صافي الدين والذمم والسلف.</span></li>
+          <li><i class="w"></i><span><b>سلف وتحويلات لشركات شقيقة</b> (بالية 278 ألف حتى ديسمبر، مشاري، ونا) وإجمالي مسحوبات شركاء كبير. تُفصل وتُسوّى قبل أي صفقة.</span></li>
+          <li><i class="w"></i><span><b>أساس محاسبي مختلط</b> (بنود مستحقة وبنود نقدية) ونسبة رسوم بنكية 2.5% في الخبر مقابل 0.75% في الدمام بلا تفسير.</span></li>
+          <li><i class="s"></i><span><b>شهر واحد فقط بفرعين كاملين</b> في القائمة. أي مشترٍ سيطلب 6 أشهر بفرعين قبل أن يعتمد الرقم السنوي.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>التوجهات المنصوحة</h3><span class="note">مرتبة بالأولوية وبالزمن</span></div>
+      <div class="recs" id="recs"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><h3>ما نطلبه من المستشار في الجلسة</h3><span class="note">أسئلة محددة</span></div>
+        <ol class="list">
+          <li>ما المضاعف المناسب اليوم لعلامة قهوة مختصة بوحدتين في السعودية: 4، 5 أم 6 أضعاف الربح قبل الإهلاك؟ وما الذي يرفعه نقطة كاملة؟</li>
+          <li>التوسع بالفروع المملوكة من التدفق النقدي، أم إدخال شريك برأس مال، أم تمويل بنكي؟ وما نسبة الحصص المقبولة مقابل 3 – 5 مليون ريال؟</li>
+          <li>هيكل الفرنشايز الأنسب: وحدة بوحدة، أم ممنوح له رئيسي لكل منطقة؟ وكيف نسعّر الرسم والإتاوة في السوق السعودي الحالي؟</li>
+          <li>كيف نعالج أرصدة الشركات الشقيقة ومسحوبات الشركاء في القوائم بحيث لا تنزّل التقييم؟</li>
+          <li>هل هدف 450 ألف ريال للفرع واقعي، أم أن نموذج 330 ألف بهامش 20% هو الذي نبني عليه الخطة؟</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>ما نجهّزه قبل الجلسة</h3><span class="note">مستندات</span></div>
+        <ul class="list">
+          <li>الميزانية العمومية وقائمة التدفقات النقدية حتى 31 أكتوبر 2026.</li>
+          <li>قائمة الدخل شهريًا للـ 15 شهرًا، مفصّلة بالفرع (الخبر، الدمام، الكيترنج).</li>
+          <li>كشف أرصدة الشركات الشقيقة ومسحوبات الشركاء، وخطة تسويتها.</li>
+          <li>عقود الإيجار للفرعين (المدة والقيمة والتجديد) وعقد الخلو.</li>
+          <li>حالة تسجيل العلامة التجارية، وقائمة الموردين الرئيسيين للحبوب.</li>
+          <li>تقارير الحملات مع تكلفة كل حملة (بعد تطبيق كود التكلفة).</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">التقييم هنا تقديري للنقاش الداخلي ولا يُعد تقييمًا معتمدًا؛ أي صفقة تحتاج مقيّمًا معتمدًا لدى الهيئة السعودية للمقيّمين المعتمدين وقوائم مالية مدققة. المضاعفات افتراضات شائعة للمنشآت الصغيرة غير المدرجة، والأرقام السنوية مشتقة من قائمة دخل 15 شهرًا كما هو مبيّن في كل طريقة.</p>
+  </section>
+
+  <div class="warnbar">
+    <span class="mark" aria-hidden="true">!</span>
+    <span><b>ملف خاص بإدارة وِكاد.</b> يحتوي قائمة الدخل كاملة وتقييمًا تقديريًا، فلا يُرسل خارج فريق الإدارة والمستشار.</span>
+  </div>
+</div>
+
+<script>
+/* ================= البيانات ================= */
+const REV=7469469.26;
+const DIRECT=[["5101","تكلفة البضاعة المباعة",2123441.62],["5102","رواتب وأجور",865999.74],["5103","مصاريف فنادق وإعاشة",2400.00],["5104","شحن وتخليص جمركي",4347.83]];
+const DIRECT_T=2996189.19, GP=4473280.07;
+const OPEX=[
+ ["5201","الرواتب والرسوم الإدارية",220476.76],["5202","تأمين طبي ومصاريف طبية",21245.43],["5203","مصاريف تسويقية ودعائية",528024.52],
+ ["5204","مصاريف الإيجار",359224.82],["5205","عمولات وحوافز",5600.00],["5206","تذاكر سفر",8003.00],["5207","التأمينات الاجتماعية",19572.41],
+ ["5208","الرسوم الحكومية",47136.86],["5209","رسوم واشتراكات",13234.52],["5210","كهرباء",56797.86],["5211","مصاريف مكتبية ومطبوعات",3402.02],
+ ["5212","مصاريف ضيافة",1758.31],["5213","رسوم وعمولات بنكية",96632.69],["5214","انتقالات",1702.41],
+ ["5215","مصاريف الإهلاك",443945.00,[["521501","مصروف إهلاك السيارات",8327.00],["521502","مصروف إهلاك آلات ومعدات",212583.00],["521503","مصروف إهلاك أجهزة مكتبية وطابعات",620.00],["521504","مصروف إهلاك أجهزة كهربائية ومكيفات",49919.00],["521505","مصروف إهلاك الأثاث",11725.00],["521506","مصروف إهلاك تحسينات",160771.00]]],
+ ["5216","مياه",8220.62],["5217","نت وجوال",4178.34],["5218","مصروف إقامات وكروت عمل",183825.53],["5219","مصروف نقل ومواصلات",15438.02],
+ ["5220","مخالفات وغرامات",7263.96],["5221","صيانة عامة",21108.56],["5222","مستلزمات تشغيلية",20492.93],["5223","خدمات عامة",53254.08],
+ ["5224","مصروف تدريب وتأسيس منيو",38750.00],["5225","صيانة سيارات وإيجار سيارات",13663.48],["5226","ملابس",5000.61],["5227","مصاريف تطبيقات التوصيل",107725.86],
+ ["5228","مصروف نهاية الخدمة",45051.26],["5229","غاز",991.59],["5230","مصاريف نظافة",8223.48],["5231","محروقات",406.29],["5232","مصاريف إجازة سنوية",47111.71],
+ ["5233","أتعاب مهنية",2500.00],["5234","مصاريف تأمين سيارات",2076.90],["5235","مصاريف متابعة جودة",14250.00],["5236","بدل سكن وفنادق",486.96],
+ ["5237","مستلزمات سكن",1900.00],["5238","مصروف خلو قدم",190000.00]];
+const OPEX_T=2618676.79, EBIT=1854603.28;
+const NONOP=[["5301","الزكاة",12793.13],["5305","جمعيات خيرية",5000.00]], NONOP_T=17793.13, NET=1836810.15;
+const DEP=443945.00, EBITDA=EBIT+DEP, ONEOFF=190000+38750, ADJ_EBITDA=EBITDA+ONEOFF;
+const MONTHS=15;
+/* من تقارير الإقفال السابقة */
+const SEP={rev:671812.39,net:-175899.61,mkt:118929.29,mkt_kh:37750.36,mkt_dm:81178.93,mkt_cat:0,cash_mkt:92744.17};
+const OCT={rev:664256.53,net:94816.63,mkt:33871,mkt_kh:16932,mkt_dm:16689,mkt_cat:250,cash_mkt:10475.20};
+const F13={rev:REV-SEP.rev-OCT.rev,net:NET-SEP.net-OCT.net,mkt:528024.52-SEP.mkt-OCT.mkt,n:13};
+
+/* ================= أدوات ================= */
+const nf=new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+const nf1=new Intl.NumberFormat('en-US',{minimumFractionDigits:1,maximumFractionDigits:1});
+const nf2=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const money=v=>nf.format(Math.round(v));
+const pct=(v,d=1)=>(v*100).toFixed(d)+'%';
+const kfmt=v=>{const a=Math.abs(v);const s=a>=1e6?(a/1e6).toFixed(a>=1e7?1:2)+'M':a>=1000?(a/1000).toFixed(0)+'k':a.toFixed(0);return (v<0?'−':'')+s;};
+const alf=v=>{const a=Math.abs(v);const s=a>=1e6?nf2.format(a/1e6).replace(/\.?0+$/,'')+' مليون':nf1.format(a/1000).replace(/\.0$/,'')+' ألف';return (v<0?'−':'')+s;};
+const $=id=>document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+function txt(p,x,y,s,o){const t=el('text',Object.assign({x,y,'font-size':11.5,fill:'var(--muted)','text-anchor':'middle'},o||{}),p);t.textContent=s;return t;}
+function mkSvg(host,W,H){host.innerHTML='';const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img'});host.appendChild(svg);const tip=document.createElement('div');tip.className='tip';tip.hidden=true;host.appendChild(tip);return {svg,tip};}
+function hostW(host){return Math.max(380,Math.round(host.clientWidth||760));}
+function tipAt(host,tip,html,xPx,yPx){tip.innerHTML=html;tip.hidden=false;const hr=host.getBoundingClientRect();tip.style.left=Math.min(hr.width-10,Math.max(10,xPx))+'px';tip.style.top=yPx+'px';}
+function niceMax(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v)));const r=v/p;return (r<=1?1:r<=2?2:r<=2.5?2.5:r<=5?5:10)*p;}
+
+/* ================= التبويبات ================= */
+const TABS={'t-sum':['p-sum','summary'],'t-pl':['p-pl','statement'],'t-mkt':['p-mkt','campaigns'],'t-dir':['p-dir','directions'],'t-ask':['p-ask','asks']};
+function showTab(tid,push){
+  Object.entries(TABS).forEach(([t,[p]])=>{const on=t===tid;$(t).setAttribute('aria-selected',on);$(p).hidden=!on;});
+  if(push){try{history.replaceState(null,'','#'+TABS[tid][1]);}catch(e){}}
+  requestAnimationFrame(drawAll);
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.id,true)));
+function tabFromHash(){const h=(location.hash||'').replace('#','');const t=Object.keys(TABS).find(k=>TABS[k][1]===h);return t||'t-sum';}
+addEventListener('hashchange',()=>showTab(tabFromHash(),false));
+
+/* ================= وضع العرض ================= */
+let MODE='tot';
+const FACTOR={tot:1,mo:1/MONTHS,yr:12/MONTHS};
+const MODE_L={tot:'15 شهرًا',mo:'متوسط الشهر',yr:'سنوي تقديري (12/15 من الفترة)'};
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+  MODE=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawKpis();drawWf();
+}));
+function drawKpis(){
+  const f=FACTOR[MODE], cur=' <span class="cur">ر.س</span>';
+  $('k-rev').innerHTML=money(REV*f)+cur;
+  $('k-rev-f').textContent=MODE==='tot'?'متوسط '+money(REV/MONTHS)+' شهريًا':MODE==='mo'?'15 شهرًا = '+money(REV):'تقدير: 12/15 من إجمالي الفترة';
+  $('k-gp').innerHTML=money(GP*f)+cur; $('k-gp-f').textContent=pct(GP/REV)+' من الإيراد · بعد البضاعة والرواتب المباشرة';
+  $('k-ebitda').innerHTML=money(EBITDA*f)+cur; $('k-ebitda-f').textContent=pct(EBITDA/REV)+' · الإهلاك '+money(DEP*f)+' مضاف للربح قبل الزكاة';
+  $('k-net').innerHTML=money(NET*f)+cur; $('k-net-f').textContent=pct(NET/REV)+' هامش صافي · '+MODE_L[MODE];
+}
+
+/* ================= 100 ريال ================= */
+function drawSeg100(){
+  const staff=865999.74+220476.76+21245.43+19572.41+183825.53+45051.26+47111.71+8003+2400+486.96+1900+5000.61;
+  const parts=[
+    ['تكلفة البضاعة',2123441.62,'var(--s2)'],
+    ['الموظفون بكل بنودهم',staff,'var(--s1)'],
+    ['إيجار وإهلاك',359224.82+443945,'var(--serious)'],
+    ['تسويق',528024.52,'var(--warn)'],
+    ['خلو قدم وتأسيس',ONEOFF,'var(--gold)'],
+    ['باقي المصاريف',0,'var(--ref)'],
+    ['صافي الربح',NET,'var(--brand)']];
+  const known=parts.filter(p=>p[1]).reduce((a,p)=>a+p[1],0);
+  parts[5][1]=REV-known;
+  const host=$('seg100');host.innerHTML='';const leg=$('seg100-leg');leg.innerHTML='';
+  parts.forEach(([l,v,c])=>{
+    const w=v/REV*100;const i=document.createElement('i');i.style.width=w+'%';i.style.background=c;i.title=l+' · '+nf1.format(w)+' ريال من كل 100';host.appendChild(i);
+    const s=document.createElement('span');s.innerHTML=`<i class="swatch" style="background:${c}"></i> ${l} <b style="font-family:var(--font-d)">${nf1.format(w)}</b>`;leg.appendChild(s);
+  });
+}
+
+/* ================= الشلال ================= */
+function drawWf(){
+  const host=$('c-wf');const W=hostW(host),H=W<560?250:290;const f=FACTOR[MODE];
+  const PL=W<560?44:58,PR=10,PT=26,PB=46,IW=W-PL-PR,IH=H-PT-PB;
+  const steps=[
+    {l:'الإيراد',v:REV,type:'tot'},{l:'تكاليف مباشرة',v:-DIRECT_T,type:'neg'},{l:'إجمالي الربح',v:GP,type:'tot'},
+    {l:'تكاليف تشغيلية',v:-OPEX_T,type:'neg'},{l:'قبل الزكاة',v:EBIT,type:'tot'},{l:'زكاة وتبرعات',v:-NONOP_T,type:'neg'},{l:'صافي الربح',v:NET,type:'tot'}];
+  const {svg,tip}=mkSvg(host,W,H);
+  const yMax=niceMax(REV*f*1.02);const y=v=>PT+IH-(v/yMax)*IH;
+  for(let i=0;i<=4;i++){const v=yMax*i/4;el('line',{x1:PL,x2:W-PR,y1:y(v),y2:y(v),stroke:'var(--line)'},svg);txt(svg,PL-6,y(v)+4,kfmt(v),{'text-anchor':'end'});}
+  const n=steps.length,slot=IW/n,bw=Math.min(54,slot*0.62);let run=0;
+  steps.forEach((s,i)=>{
+    const x=PL+slot*i+(slot-bw)/2;let top,bot;
+    if(s.type==='tot'){top=s.v*f;bot=0;run=s.v*f;}else{bot=run+s.v*f;top=run;run=bot;}
+    const r=el('rect',{x,y:y(top),width:bw,height:Math.max(2,y(bot)-y(top)),rx:4,fill:s.type==='tot'?'var(--brand)':'var(--crit)',opacity:s.type==='tot'?1:.85},svg);
+    txt(svg,x+bw/2,y(top)-6,kfmt(Math.abs(s.v*f)),{fill:'var(--ink)','font-weight':600});
+    const lab=txt(svg,x+bw/2,H-PB+16,s.l,{fill:'var(--ink-2)','font-size':W<560?9.5:11});
+    if(W<560&&s.l.length>10){lab.textContent=s.l.split(' ')[0];}
+    if(i<n-1&&s.type!=='tot'){}
+    const hit=el('rect',{x:PL+slot*i,y:PT,width:slot,height:IH,fill:'transparent'},svg);
+    hit.addEventListener('pointermove',e=>{const hr=host.getBoundingClientRect();tipAt(host,tip,`<b>${s.l}</b><div class="row"><span>${MODE_L[MODE]}</span><span>${money(Math.abs(s.v*f))} ر.س</span></div><div class="row"><span>من الإيراد</span><span>${pct(Math.abs(s.v)/REV)}</span></div>`,(x+bw/2)/W*hr.width,e.clientY-hr.top-8);});
+    hit.addEventListener('pointerleave',()=>tip.hidden=true);
+  });
+  $('wf-note').textContent=MODE_L[MODE];
+}
+
+/* ================= أكبر البنود ================= */
+function hbars(hostId,items,opts){
+  const host=$(hostId);const W=hostW(host),rowH=opts.rowH||28,pl=Math.min(opts.pl||220,W*0.42),pr=Math.min(100,W*0.2),pt=6;
+  const H=pt*2+rowH*items.length,iw=W-pl-pr;
+  const {svg,tip}=mkSvg(host,W,H);
+  const max=opts.max||Math.max(...items.map(p=>p.v))||1;
+  items.forEach((p,i)=>{
+    const y=pt+rowH*i,w=Math.max(2,p.v/max*iw);
+    el('rect',{x:pl,y:y+5,width:w,height:rowH-11,rx:4,fill:p.c||'var(--s1)'},svg);
+    const l=txt(svg,pl-10,y+rowH/2+4,p.l,{'text-anchor':'end',fill:'var(--ink-2)','font-size':12});
+    if(p.l.length>26&&W<600)l.textContent=p.l.slice(0,24)+'…';
+    txt(svg,pl+w+8,y+rowH/2+4,opts.fmt?opts.fmt(p):money(p.v),{'text-anchor':'start',fill:'var(--ink)','font-size':11.5,'font-weight':600});
+    const hit=el('rect',{x:0,y,width:W,height:rowH,fill:'transparent'},svg);
+    hit.addEventListener('pointermove',e=>{const hr=host.getBoundingClientRect();tipAt(host,tip,p.tip||`<b>${p.l}</b><div class="row"><span>المبلغ</span><span>${money(p.v)} ر.س</span></div>`,(pl+w/2)/W*hr.width,e.clientY-hr.top-8);});
+    hit.addEventListener('pointerleave',()=>tip.hidden=true);
+  });
+}
+function drawTop(){
+  const items=[];
+  DIRECT.forEach(d=>items.push({l:d[1],v:d[2],c:'var(--s1)',g:'مباشر'}));
+  OPEX.forEach(o=>items.push({l:o[1],v:o[2],c:(o[0]==='5238'||o[0]==='5224')?'var(--gold)':'var(--s2)',g:o[0]==='5238'||o[0]==='5224'?'لمرة واحدة':'تشغيلي'}));
+  items.sort((a,b)=>b.v-a.v);
+  const top=items.slice(0,14);const sum=top.reduce((a,p)=>a+p.v,0);
+  top.forEach(p=>p.tip=`<b>${p.l}</b><div class="row"><span>${p.g}</span><span>${money(p.v)} ر.س</span></div><div class="row"><span>من الإيراد</span><span>${pct(p.v/REV)}</span></div>`);
+  hbars('c-top',top,{pl:230});
+  $('top-note').textContent='تمثل '+pct(sum/(DIRECT_T+OPEX_T+NONOP_T),0)+' من كل التكاليف';
+}
+
+/* ================= قبل وبعد ================= */
+function groupedBars(hostId,cats,series,opts){
+  const host=$(hostId);const W=hostW(host),H=opts.h||(W<560?260:290);
+  const PL=W<560?44:58,PR=10,PT=22,PB=opts.pb||44,IW=W-PL-PR,IH=H-PT-PB;
+  const {svg,tip}=mkSvg(host,W,H);
+  const all=series.flatMap(s=>s.values);
+  const maxV=niceMax(Math.max(...all,1)*1.08),minV=Math.min(0,...all);
+  const minN=minV<0?-niceMax(-minV*1.1):0;
+  const y=v=>PT+(maxV-v)/(maxV-minN)*IH;
+  const ticks=5;for(let i=0;i<=ticks;i++){const v=minN+(maxV-minN)*i/ticks;el('line',{x1:PL,x2:W-PR,y1:y(v),y2:y(v),stroke:'var(--line)'},svg);txt(svg,PL-6,y(v)+4,kfmt(v),{'text-anchor':'end'});}
+  el('line',{x1:PL,x2:W-PR,y1:y(0),y2:y(0),stroke:'var(--line-strong)'},svg);
+  const n=cats.length,slot=IW/n,ns=series.length,gap=4,bw=Math.min(46,(slot*0.7-gap*(ns-1))/ns);
+  cats.forEach((c,i)=>{
+    const x0=PL+slot*i+(slot-(bw*ns+gap*(ns-1)))/2;
+    series.forEach((s,j)=>{
+      const v=s.values[i],x=x0+j*(bw+gap);
+      if(s.stack){ /* stacked segments */
+        let acc=0;s.stack[i].forEach(seg=>{if(!seg.v)return;el('rect',{x,y:y(acc+seg.v),width:bw,height:Math.max(1,y(acc)-y(acc+seg.v)),rx:3,fill:seg.c,stroke:'var(--surface)','stroke-width':1.5},svg);acc+=seg.v;});
+      }else{
+        el('rect',{x,y:v>=0?y(v):y(0),width:bw,height:Math.max(2,Math.abs(y(v)-y(0))),rx:4,fill:s.color},svg);
+      }
+      txt(svg,x+bw/2,(v>=0?y(v)-6:y(v)+14),opts.lab?opts.lab(v,i,j):kfmt(v),{fill:'var(--ink)','font-weight':600,'font-size':11});
+    });
+    const lines=String(c).split('\n');lines.forEach((ln,k)=>txt(svg,PL+slot*i+slot/2,H-PB+16+k*14,ln,{fill:'var(--ink-2)','font-size':W<560?10:11.5}));
+    const hit=el('rect',{x:PL+slot*i,y:PT,width:slot,height:IH,fill:'transparent'},svg);
+    hit.addEventListener('pointermove',e=>{const hr=host.getBoundingClientRect();tipAt(host,tip,opts.tip(i),(PL+slot*i+slot/2)/W*hr.width,e.clientY-hr.top-8);});
+    hit.addEventListener('pointerleave',()=>tip.hidden=true);
+  });
+}
+function drawMonths(){
+  const cats=['متوسط الشهر\nأغسطس 25 – أغسطس 26','سبتمبر 2026','أكتوبر 2026'];
+  const rev=[F13.rev/13,SEP.rev,OCT.rev],net=[F13.net/13,SEP.net,OCT.net];
+  groupedBars('c-mo',cats,[{color:'var(--s1)',values:rev},{color:'var(--s2)',values:net}],{
+    tip:i=>`<b>${cats[i].replace('\n',' · ')}</b><div class="row"><span><i class="dot" style="background:var(--s1)"></i>الإيراد</span><span>${money(rev[i])}</span></div><div class="row"><span><i class="dot" style="background:var(--s2)"></i>صافي الربح</span><span>${money(net[i])}</span></div><div class="row"><span>الهامش</span><span>${pct(net[i]/rev[i])}</span></div>`});
+  const rows=[
+    ['الإيراد الشهري',money(F13.rev/13),money(SEP.rev),money(OCT.rev)],
+    ['صافي الربح الشهري',money(F13.net/13),`<span class="neg">${money(SEP.net)}</span>`,money(OCT.net)],
+    ['هامش الربح',pct(F13.net/F13.rev),`<span class="neg">${pct(SEP.net/SEP.rev)}</span>`,pct(OCT.net/OCT.rev)],
+    ['التسويق الشهري',money(F13.mkt/13)+' <span style="color:var(--muted)">('+pct(F13.mkt/F13.rev)+')</span>',money(SEP.mkt)+' <span style="color:var(--muted)">('+pct(SEP.mkt/SEP.rev)+')</span>',money(OCT.mkt)+' <span style="color:var(--muted)">('+pct(OCT.mkt/OCT.rev)+')</span>'],
+    ['الفروع العاملة','الخبر + الكيترنج','الخبر + الدمام من 9 سبتمبر','الخبر + الدمام + الكيترنج'],
+    ['مصدر الرقم','محسوب بالطرح من القائمة','تقرير إقفال سبتمبر','تقرير إقفال أكتوبر']];
+  $('mo-tbody').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+}
+
+/* ================= قائمة الدخل ================= */
+function drawPL(){
+  const row=(code,l,v,cls)=>`<tr class="${cls||''}"><td class="num" style="color:var(--muted)">${code||''}</td><td ${cls==='sub'?'class="sub"':''}>${l}</td><td class="num">${v==null?'':nf2.format(v)}</td><td class="num">${v==null?'':pct(v/REV,v/REV<0.001?2:1)}</td></tr>`;
+  let h='';
+  h+=`<tr class="grp"><td>41</td><td>الإيرادات التشغيلية</td><td></td><td></td></tr>`;
+  h+=row('4101','إيرادات المبيعات/ الخدمات',REV);
+  h+=row('','مجموع 41 - الإيرادات التشغيلية',REV,'tot');
+  h+=`<tr class="grp"><td>51</td><td>التكاليف المباشرة</td><td></td><td></td></tr>`;
+  DIRECT.forEach(d=>h+=row(d[0],d[1],d[2]));
+  h+=row('','مجموع 51 - التكاليف المباشرة',DIRECT_T,'tot');
+  h+=row('','إجمالي الربح',GP,'tot hl');
+  h+=`<tr class="grp"><td>52</td><td>التكاليف التشغيلية</td><td></td><td></td></tr>`;
+  OPEX.forEach(o=>{if(o[3]){h+=row(o[0],o[1],null);o[3].forEach(d=>h+=row(d[0],d[1],d[2],'sub'));h+=row('','مجموع 5215 - مصاريف الإهلاك',o[2],'tot');}else h+=row(o[0],o[1],o[2]);});
+  h+=row('','مجموع 52 - التكاليف التشغيلية',OPEX_T,'tot');
+  h+=row('','صافي الدخل قبل الفوائد والضريبة والزكاة',EBIT,'tot hl');
+  h+=`<tr class="grp"><td>53</td><td>مصاريف غير التشغيلية</td><td></td><td></td></tr>`;
+  NONOP.forEach(d=>h+=row(d[0],d[1],d[2]));
+  h+=row('','مجموع 53 - مصاريف غير التشغيلية',NONOP_T,'tot');
+  h+=row('','صافي الربح',NET,'tot hl');
+  $('pl-tbody').innerHTML=h;
+}
+
+/* ================= الحملات ================= */
+function drawMkt(){
+  const cats=['متوسط الشهر\nقبل سبتمبر','سبتمبر 2026','أكتوبر 2026'];
+  const vals=[F13.mkt/13,SEP.mkt,OCT.mkt];
+  const stack=[[{v:F13.mkt/13,c:'var(--ref)'}],[{v:SEP.mkt_kh,c:'var(--s1)'},{v:SEP.mkt_dm,c:'var(--s2)'}],[{v:OCT.mkt_kh,c:'var(--s1)'},{v:OCT.mkt_dm,c:'var(--s2)'},{v:OCT.mkt_cat,c:'var(--gold)'}]];
+  const revs=[F13.rev/13,SEP.rev,OCT.rev];
+  groupedBars('c-mkt',cats,[{values:vals,stack}],{lab:(v,i)=>kfmt(v)+' · '+pct(v/revs[i]),
+    tip:i=>i===0?`<b>متوسط الشهر قبل الدمام</b><div class="row"><span>تسويق</span><span>${money(vals[0])} ر.س</span></div><div class="row"><span>من المبيعات</span><span>${pct(vals[0]/revs[0])}</span></div>`:
+      `<b>${cats[i]}</b><div class="row"><span><i class="dot" style="background:var(--s1)"></i>الخبر</span><span>${money(stack[i][0].v)}</span></div><div class="row"><span><i class="dot" style="background:var(--s2)"></i>الدمام</span><span>${money(stack[i][1].v)}</span></div>${stack[i][2]?`<div class="row"><span><i class="dot" style="background:var(--gold)"></i>الكيترنج</span><span>${money(stack[i][2].v)}</span></div>`:''}<div class="row"><span>الإجمالي</span><span>${money(vals[i])} · ${pct(vals[i]/revs[i])}</span></div><div class="row"><span>المدفوع نقدًا</span><span>${money(i===1?SEP.cash_mkt:OCT.cash_mkt)}</span></div>`});
+  const camps=[
+    ['كأس العالم','15 – 28 يونيو 2026','إنستقرام · 10 ريلز · فعاليات بالفرع · معلنون · سحب على 3 آيفونات','—','أعلى مشاهدات إنستقرام في الفترة','<span class="pill warn">ضجة بلا مبيعات</span>'],
+    ['لا تهز الفنجان (تشويق الافتتاح)','26 أغسطس – 2 سبتمبر','تيك توك · ختم الفواتير · شاشات الفرع · فنجان متنقل','—','24.9 ألف مشاهدة في 8 أيام · أعلى تعليقات','<span class="pill good">صدى ممتاز</span>'],
+    ['افتتاح فرع الدمام','7 – 9 سبتمبر 2026','15 مؤثرًا على تيك توك · دعوات VIP · تجربة الفرع','<b>20,600</b> للمؤثرين فقط','1.11 مليون مشاهدة · 18.5 ر.س للألف · 12.7% زاروا الحساب','<span class="pill">الأوسع وصولًا</span>'],
+    ['اليوم الوطني «صدى العز»','19 – 23 سبتمبر 2026','تيك توك · أكواب الراديو · واجهة البيت السعودي · مطبوعات','—','35.5 ألف مشاهدة في 5 أيام · المبيعات فوق هدف اليوم الوطني','<span class="pill good">الأنجح</span>'],
+    ['موقف قوّة','الجمعة 23 أكتوبر 2026','4 معلنين تيك توك · 5,000 كوب · مشروب مجاني للعسكريين','<b>3,050</b> للمعلنين + 714 مشروبًا مجانيًا (13,941 بسعر المنيو)','403 ألف مشاهدة · 7.6 ر.س للألف · 1,558 طلبًا يوم العرض','<span class="pill good">الجمعة ذروة الأسبوع</span>'],
+    ['فيديو تجريبي خارج حساب وِكاد','أكتوبر 2026','تيك توك','<b>20</b>','29 ألف مشاهدة · 0.69 ر.س للألف','<span class="pill">تجربة</span>'],
+    ['حملة قوقل للكيترنج','جاهزة منذ 28 أكتوبر · لم تُطلق','بحث قوقل · 54 كلمة · 5 مجموعات','1,800 شهريًا (مخطط)','تُقاس بالحجوزات عبر GA4','<span class="pill gold">بانتظار الحساب</span>']];
+  $('camp-tbody').innerHTML=camps.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' style="font-weight:600;color:var(--ink)"':''}>${c}</td>`).join('')}</tr>`).join('');
+  const cpm=[
+    {l:'10 حسابات أخرى (الافتتاح)',v:12150/446800*1000,c:'var(--s1)',views:446800,cost:12150},
+    {l:'@gheyo7',v:4000/172800*1000,c:'var(--s1)',views:172800,cost:4000},
+    {l:'@94fmo',v:1500/113900*1000,c:'var(--s1)',views:113900,cost:1500},
+    {l:'@al_reem25',v:1250/128400*1000,c:'var(--s1)',views:128400,cost:1250},
+    {l:'@fhd.khobar',v:800/106500*1000,c:'var(--s1)',views:106500,cost:800},
+    {l:'@swalif.meem',v:900/143600*1000,c:'var(--s1)',views:143600,cost:900},
+    {l:'موقف قوّة · 4 معلنين',v:3050/403051*1000,c:'var(--s2)',views:403051,cost:3050}];
+  cpm.forEach(p=>p.tip=`<b>${p.l}</b><div class="row"><span>المشاهدات</span><span>${money(p.views)}</span></div><div class="row"><span>التكلفة</span><span>${money(p.cost)} ر.س</span></div><div class="row"><span>للألف مشاهدة</span><span>${nf1.format(p.v)} ر.س</span></div>`);
+  hbars('c-cpm',cpm,{pl:200,fmt:p=>nf1.format(p.v)+' ر.س'});
+}
+
+/* ================= نموذج الفرع ================= */
+function drawUnit(){
+  const sc=[250000,330000,450000];const cogs=.335,fixed={staff:83400,rent:18300,dep:10900,mkt:16700,other:26500};
+  const ft=Object.values(fixed).reduce((a,b)=>a+b,0);const inv=646981;
+  const calc=r=>{const c=r*cogs,net=r-c-ft,ebitda=net+fixed.dep;return {c,net,ebitda,pay:ebitda>0?inv/ebitda:null};};
+  const R=sc.map(calc);
+  const line=(l,f,cls)=>`<tr class="${cls||''}"><td>${l}</td>${R.map((x,i)=>`<td class="num ${typeof cls==='string'&&cls.includes('net')?(x.net<0?'bad':'ok'):''}">${f(x,i)}</td>`).join('')}</tr>`;
+  let h='';
+  h+=line('المبيعات',(x,i)=>money(sc[i]));
+  h+=line('تكلفة البضاعة 33.5%',x=>'−'+money(x.c));
+  h+=line('رواتب وإقامات',()=>'−'+money(fixed.staff));
+  h+=line('إيجار + إهلاك',()=>'−'+money(fixed.rent+fixed.dep));
+  h+=line('تسويق + مصاريف أخرى',()=>'−'+money(fixed.mkt+fixed.other));
+  h+=`<tr class="tot"><td>صافي الربح الشهري</td>${R.map(x=>`<td class="num ${x.net<0?'bad':'ok'}">${money(x.net)}</td>`).join('')}</tr>`;
+  h+=line('هامش الربح',(x,i)=>pct(x.net/sc[i]));
+  h+=line('الربح قبل الإهلاك',x=>money(x.ebitda));
+  h+=`<tr class="tot"><td>استرداد 647 ألف (أشهر)</td>${R.map(x=>`<td class="num">${x.pay?nf1.format(x.pay):'—'}</td>`).join('')}</tr>`;
+  $('unit-tbody').innerHTML=h;
+}
+
+/* ================= التقييم ================= */
+function drawVal(){
+  const yrE=EBITDA*12/15,yrA=ADJ_EBITDA*12/15,yrN=NET*12/15,run=OCT.rev*12,octE=(OCT.net+39878.69)*12;
+  const M=[
+    {l:'مضاعف الربح قبل الإهلاك المعدّل',base:yrA,baseL:alf(yrA)+' (بعد إضافة خلو القدم وتأسيس المنيو)',m:'4 – 6×',lo:yrA*4,hi:yrA*6,c:'var(--brand)'},
+    {l:'مضاعف الربح قبل الإهلاك كما ورد',base:yrE,baseL:alf(yrE),m:'4 – 6×',lo:yrE*4,hi:yrE*6,c:'var(--s1)'},
+    {l:'مضاعف صافي الربح',base:yrN,baseL:alf(yrN),m:'6 – 8×',lo:yrN*6,hi:yrN*8,c:'var(--s1)'},
+    {l:'مضاعف الإيرادات (معدل أكتوبر السنوي)',base:run,baseL:alf(run)+' (664 ألف × 12)',m:'1.0 – 1.5×',lo:run*1,hi:run*1.5,c:'var(--s1)'},
+    {l:'حساسية: ربح أكتوبر قبل الإهلاك × 12',base:octE,baseL:alf(octE),m:'4 – 6×',lo:octE*4,hi:octE*6,c:'var(--serious)'}];
+  const host=$('c-val');const W=hostW(host),rowH=40,pl=Math.min(250,W*0.4),pr=20,pt=26,pb=8;
+  const H=pt+pb+rowH*M.length;const iw=W-pl-pr;const maxV=16e6;
+  const {svg,tip}=mkSvg(host,W,H);
+  const x=v=>pl+v/maxV*iw;
+  el('rect',{x:x(8e6),y:pt-14,width:x(12e6)-x(8e6),height:H-pt+6,fill:'var(--gold)',opacity:.16,rx:6},svg);
+  for(let v=0;v<=16e6;v+=2e6){el('line',{x1:x(v),x2:x(v),y1:pt-6,y2:H-pb,stroke:'var(--line)'},svg);txt(svg,x(v),pt-12,(v/1e6)+'M',{'font-size':10.5});}
+  el('line',{x1:x(10e6),x2:x(10e6),y1:pt-6,y2:H-pb,stroke:'var(--gold)','stroke-dasharray':'3 3'},svg);
+  M.forEach((m,i)=>{
+    const y=pt+rowH*i;
+    el('rect',{x:x(m.lo),y:y+11,width:Math.max(3,x(m.hi)-x(m.lo)),height:rowH-22,rx:4,fill:m.c,opacity:i===0?1:.8},svg);
+    const l=txt(svg,pl-10,y+rowH/2+4,m.l,{'text-anchor':'end',fill:'var(--ink-2)','font-size':W<600?10.5:12});
+    if(W<600&&m.l.length>24)l.textContent=m.l.slice(0,22)+'…';
+    txt(svg,x(m.lo)-6,y+rowH/2+4,nf1.format(m.lo/1e6),{'text-anchor':'end',fill:'var(--ink)','font-size':11,'font-weight':600});
+    txt(svg,x(m.hi)+6,y+rowH/2+4,nf1.format(m.hi/1e6),{'text-anchor':'start',fill:'var(--ink)','font-size':11,'font-weight':600});
+    const hit=el('rect',{x:0,y,width:W,height:rowH,fill:'transparent'},svg);
+    hit.addEventListener('pointermove',e=>{const hr=host.getBoundingClientRect();tipAt(host,tip,`<b>${m.l}</b><div class="row"><span>الأساس السنوي</span><span>${money(m.base)} ر.س</span></div><div class="row"><span>المضاعف</span><span>${m.m}</span></div><div class="row"><span>النطاق</span><span>${nf1.format(m.lo/1e6)} – ${nf1.format(m.hi/1e6)} مليون</span></div>`,(x(m.lo)+x(m.hi))/2/W*hr.width,e.clientY-hr.top-8);});
+    hit.addEventListener('pointerleave',()=>tip.hidden=true);
+  });
+  $('val-tbody').innerHTML=M.map((m,i)=>`<tr class="${i===0?'hl':''}"><td>${m.l}</td><td>${m.baseL}</td><td class="num">${m.m}</td><td class="num">${nf1.format(m.lo/1e6)} – ${nf1.format(m.hi/1e6)}</td></tr>`).join('')+
+    `<tr class="tot"><td>النطاق المعتمد للنقاش</td><td>تقاطع الطرق الأربع الأولى</td><td class="num">—</td><td class="num">8.0 – 12.0 · الوسط ≈ 10</td></tr>`;
+}
+
+/* ================= التوصيات ================= */
+function drawRecs(){
+  const recs=[
+    {t:'أعيدوا الخبر فوق 350 ألف قبل أي توسع',w:'0 – 3 أشهر',p:'crit',b:'الخبر باع 289 ألف في أكتوبر وتعادله 278 ألف. المطلوب 21% زيادة: عروض أيام الأحد والاثنين والسبت، تكرار «أقوى يوم في الشهر» مرة كل شهر، وضبط تكلفة البضاعة من 36.6% إلى مستوى الدمام 33.5%.',k:'عند 350 ألف: +42 ألف ربح شهري من الخبر وحده'},
+    {t:'اربطوا كل ريال تسويق بحملة ورقم',w:'فورًا',p:'crit',b:'كود تكلفة لكل حملة، سقف 6% من المبيعات للتسويق الجاري، وتسويق الافتتاح يُحمَّل على تكلفة تأسيس الفرع. تقارير الوكالة تضيف سطر «التكلفة الكاملة» لا تكلفة المؤثرين فقط.',k:'يحوّل 528 ألفًا من بند واحد إلى عائد مقاس لكل حملة'},
+    {t:'نظّفوا القوائم قبل أي مستثمر أو ممنوح له',w:'3 – 6 أشهر',p:'warn',b:'ميزانية عمومية وقائمة تدفقات، فصل سلف الشركات الشقيقة ومسحوبات الشركاء وتسويتها، توحيد الأساس المحاسبي (مستحق أو نقدي)، وتدقيق خارجي للسنة المالية 2026.',k:'كل نقطة غموض هنا تُخصم من المضاعف'},
+    {t:'الفرع الثالث في الربع الثاني 2027 بتمويل ذاتي',w:'3 – 6 أشهر',p:'warn',b:'بنموذج الدمام نفسه وبكتيّب افتتاح مقفل المواعيد وميزانية افتتاح محددة. يُقرّ فقط بعد ثلاثة أشهر متتالية فوق 100 ألف صافي ربح للشركة.',k:'استرداد 9 – 12 شهرًا · لا دين'},
+    {t:'جهّزوا ملف الفرنشايز ليكون جاهزًا في سبتمبر 2027',w:'6 – 10 أشهر',p:'gold',b:'تسجيل العلامة، دليل التشغيل، وثيقة الإفصاح، النموذج المالي للوحدة، وعقد نموذجي. أول ممنوح له في الرياض مطلع 2028.',k:'200 – 240 ألف دخل سنوي لكل وحدة بلا رأس مال'},
+    {t:'الكيترنج إلى 100 ألف شهريًا',w:'خلال 2027',p:'good',b:'إطلاق حملة قوقل الجاهزة (1,800 شهريًا)، إظهار الأسعار على الموقع، وملف قوقل للكيترنج. التسويق الحالي للكيترنج 250 ريالًا في الشهر لأعلى هامش في الشركة.',k:'+30 ألف ربح شهري بلا فرع جديد'},
+    {t:'خفض خصومات التوصيل الممولة من المتجر إلى 12%',w:'خلال شهر',p:'good',b:'الخصومات 21.4% من مبيعات المنصة وتفوق العمولة. الاكتفاء بخصم Pro وإيقاف الباقات المخفّضة في الذروة.',k:'نحو 4 آلاف ريال شهريًا تعود للهامش'}];
+  $('recs').innerHTML=recs.map((r,i)=>`<div class="rec"><div class="n">${i+1}</div><div><h4>${r.t} <span class="pill ${r.p}">${r.w}</span></h4><p>${r.b}</p><div class="k">${r.k}</div></div></div>`).join('');
+}
+
+/* ================= تشغيل ================= */
+let drawn={};
+function drawAll(){
+  const vis=id=>!$(id).hidden;
+  if(vis('p-sum')){drawWf();drawTop();drawMonths();}
+  if(vis('p-mkt'))drawMkt();
+  if(vis('p-ask'))drawVal();
+}
+drawKpis();drawSeg100();drawPL();drawUnit();drawRecs();
+showTab(tabFromHash(),false);
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(drawAll,120);});
+
+</script>
+</body></html>
